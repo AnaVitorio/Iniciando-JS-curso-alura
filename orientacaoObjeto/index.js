@@ -11,7 +11,7 @@ cliente.email = "carol2@gmail.com";
 const contaCorrenteCarol = new ContaCorrente();
 contaCorrenteCarol.numeroConta =  12345;
 contaCorrenteCarol.agencia = 1001;
-contaCorrenteCarol.saldo = 100;
+contaCorrenteCarol.depositar(100);
 
 const cliente2 = new Cliente();
 
@@ -23,9 +23,8 @@ const contaCorrenteLucas = new ContaCorrente();
 
 contaCorrenteLucas.numeroConta =  197536;
 contaCorrenteLucas.agencia = 1002;
-contaCorrenteLucas.saldo = 0;
 
-
+console.log(contaCorrenteCarol);
 contaCorrenteCarol.transferir(100, contaCorrenteLucas);
 console.log(contaCorrenteCarol);
 console.log(contaCorrenteLucas);

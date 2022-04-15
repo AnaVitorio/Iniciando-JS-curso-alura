@@ -1,22 +1,31 @@
 export class ContaCorrente{
     numeroConta;
     agencia;
-    saldo;
+    _saldo = 0;
+
+
+
+    depositar(valor){
+        if(valor < 0){
+            return "Não é possível depositar valores negativos"
+        }
+        this._saldo = this._saldo + valor;
+
+    }
 
 
     sacar(valor){
-        if(valor < this.saldo){
-            this.saldo -= valor; 
+        if(valor <= this._saldo){
+            this._saldo -= valor; 
         } else{
             console.log("Voce não tem saldo suficiente.");
         }
     }
 
     transferir(valor, contaDestino){
-        if(valor > this.saldo){
-            return "Saldo insufuciente para realizar essa transferência.";
-        }
-        this.saldo = this.saldo - valor;
-        contaDestino.saldo = contaDestino.saldo + valor;
+        this.sacar(valor);
+        contaDestino.depositar(valor);
     }
+
+
 }
