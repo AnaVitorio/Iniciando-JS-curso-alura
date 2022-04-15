@@ -1,12 +1,5 @@
-//Criando a primeira classe
-class Cliente{
-    nome;
-    cpf;
-    email;
-    agencia;
-    saldo;
-
-}
+import {Cliente} from "./Cliente.js";
+import {ContaCorrente} from "./ContaCorrente.js";
 
 //objeto - instanciando um cliente
 const cliente = new Cliente();
@@ -14,11 +7,25 @@ const cliente = new Cliente();
 cliente.nome = "Carol";
 cliente.cpf = 11122233345;
 cliente.email = "carol2@gmail.com";
-cliente.agencia = 1001;
-cliente.saldo = 1000.00;
-// console.log(`Nome do Cliente: ${cliente._nome}`);
-// console.log(`CPF: ${cliente._cpf}`);
-// console.log(`Agência: ${cliente._agencia}`);
-// console.log(`Saldo: ${cliente._saldo}`);
-console.log(cliente);
 
+const contaCorrenteCarol = new ContaCorrente();
+contaCorrenteCarol.numeroConta =  12345;
+contaCorrenteCarol.agencia = 1001;
+contaCorrenteCarol.saldo = 100;
+
+const cliente2 = new Cliente();
+
+cliente2.nome = "Lucas";
+cliente2.cpf = 22222222234;
+cliente2.email = "lucas@gmail.com";
+
+const contaCorrenteLucas = new ContaCorrente();
+
+contaCorrenteLucas.numeroConta =  197536;
+contaCorrenteLucas.agencia = 1002;
+contaCorrenteLucas.saldo = 0;
+
+
+contaCorrenteCarol.transferir(100, contaCorrenteLucas);
+console.log(contaCorrenteCarol);
+console.log(contaCorrenteLucas);
