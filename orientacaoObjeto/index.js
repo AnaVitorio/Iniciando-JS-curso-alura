@@ -18,3 +18,4 @@ contaCorrenteCarol.transferir(100, contaCorrenteLucas);
 
 console.log(cliente);
 console.log(cliente2);
+console.log(ContaCorrente.numeroDeContas);
