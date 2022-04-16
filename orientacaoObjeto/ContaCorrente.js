@@ -1,52 +1,12 @@
 import { Cliente } from "./Cliente.js";
+import { Conta } from "./Conta.js";
 
-export class ContaCorrente{
-    agencia;
-    _saldo = 0;
-    _cliente;
+export class ContaCorrente extends Conta{
     static numeroDeContas = 0;
 
-    constructor(agencia, cliente){
-        this.agencia = agencia;
-        this.cliente = cliente;
+    constructor(cliente, agencia){
+        super(0, cliente, agencia);
         ContaCorrente.numeroDeContas += 1;
-    }
-
-    set cliente(cliente){
-        if(cliente instanceof Cliente){
-            this._cliente = cliente;
-        }
-        
-    }
-    get cliente(){
-        return this._cliente;
-    }
-
-    get saldo(){
-        return this._saldo;
-    }
-
-
-    depositar(valor){
-        if(valor < 0){
-            return "Não é possível depositar valores negativos"
-        }
-        this._saldo = this._saldo + valor;
-
-    }
-
-
-    sacar(valor){
-        if(valor <= this._saldo){
-            this._saldo -= valor; 
-        } else{
-            console.log("Voce não tem saldo suficiente.");
-        }
-    }
-
-    transferir(valor, contaDestino){
-        this.sacar(valor);
-        contaDestino.depositar(valor);
     }
 
 
