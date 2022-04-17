@@ -10,4 +10,9 @@ export class Cliente{
         this.cpf = cpf;
         this._senha = senha;
     }
+
+
+    autenticar(){
+        return true;
+    }
 }
