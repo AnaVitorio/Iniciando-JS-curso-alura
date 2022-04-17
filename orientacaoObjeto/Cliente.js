@@ -5,8 +5,9 @@ export class Cliente{
     email;
 
 
-    constructor(nome, cpf){
+    constructor(nome, cpf, senha){
         this.nome = nome;
         this.cpf = cpf;
+        this._senha = senha;
     }
 }
