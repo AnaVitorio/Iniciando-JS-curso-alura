@@ -1,7 +1,11 @@
+// Classe abstrata não pode ser instânciada, só vai ser herdada.
 export class Conta{
 
     constructor(saldoInical, cliente, agencia){
-        this._saldoInical = saldoInical;
+        if(this.constructor == Conta){
+            throw new Error("Você não deveria instanciar um objeto do tipo Conta diretamente, pois é uma classe abstrata.")
+        }
+        this._saldo = saldoInical;
         this._cliente = cliente;
         this._agencia = agencia;
     }
@@ -21,19 +25,22 @@ export class Conta{
     }
 
     depositar(valor){
-        if(valor < 0){
-            return "Não é possível depositar valores negativos"
-        }
-        this._saldo = this._saldo + valor;
-
+        this._saldo += valor;
     }
 
-
+    //método abstrato
     sacar(valor){
-        if(valor <= this._saldo){
-            this._saldo -= valor; 
+     throw new Error("O método sacar da conta é abstrato")
+    }
+
+    //método privado
+    _sacar(valor, taxa){
+        const valorSacado = taxa * valor;
+        if(valorSacado <= this._saldo){
+            this._saldo -= valorSacado;
+            return valorSacado; 
         } else{
-            console.log("Voce não tem saldo suficiente.");
+            return 0; 
         }
     }
 

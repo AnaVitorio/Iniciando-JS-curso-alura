@@ -1,26 +1,30 @@
 import {Cliente} from "./Cliente.js";
 import {ContaCorrente} from "./ContaCorrente.js";
-import { ContaPoupanca } from "./ContaPoupanca.js";
-import { Conta } from "./Conta.js";
+import { ContaPoupanca} from "./ContaPoupanca.js";
+import { ContaSalario } from "./ContaSalario.js";
 
 //objeto - instanciando um cliente
 const cliente = new Cliente("Carol", 11122233345);
 cliente.email = "carol2@gmail.com";
 
-const contaCorrenteCarol = new ContaCorrente(100, cliente, 1001);
-contaCorrenteCarol.depositar(100);
+const contaCorrenteCarol = new ContaCorrente(cliente, 1001);
+contaCorrenteCarol.depositar(500);
 
 
 const cliente2 = new Cliente("Lucas", 22222222234);
 cliente2.email = "lucas@gmail.com";
 
-const contaCorrenteLucas = new ContaCorrente(0, cliente2, 1002);
+const contaCorrenteLucas = new ContaCorrente(cliente2, 1002);
 
 contaCorrenteCarol.transferir(100, contaCorrenteLucas);
 
-console.log(cliente);
-console.log(cliente2);
-console.log(ContaCorrente.numeroDeContas);
+const contaSalario = new ContaSalario(cliente);
+contaSalario.depositar(100);
+contaSalario.sacar(50);
 
-const contaPoupanca = new ContaPoupanca(1000, cliente, 1001);
+const contaPoupanca = new ContaPoupanca(0, cliente, 1001);
+
+contaCorrenteCarol.transferir(300, contaPoupanca);
 console.log(contaPoupanca);
+console.log(contaCorrenteCarol);
+
